@@ -92,7 +92,6 @@ class hyperMeasure(Measurement):
         
         self.display_update_period = self.settings['refresh_period'] 
        
-        #length = self.image_gen.frame_num.val
         length = self.settings.step_num.val
         self.settings['progress'] = (self.frame_index +1) * 100/length
         
@@ -132,7 +131,6 @@ class hyperMeasure(Measurement):
             
             current_pos = self.stage.motor.get_position()
             print(f'Position at acquisition {frame_idx}:', current_pos)
-            #self.image_gen.camera.acq_start() #Modificato
             self.image_gen.hamamatsu.startAcquisition()
             self.frame_index = frame_idx    
             [frame, dims] = self.image_gen.hamamatsu.getLastFrame()        
